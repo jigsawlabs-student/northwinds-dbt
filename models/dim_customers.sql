@@ -1,1 +1,0 @@
-SELECT contact_name, address, phone FROM postgres_northwinds_rds_public.customers
