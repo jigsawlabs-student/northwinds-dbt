@@ -1,0 +1,1 @@
+SELECT supplier_id, company_name as name FROM POSTGRES_NORTHWINDS_RDS_PUBLIC.suppliers
