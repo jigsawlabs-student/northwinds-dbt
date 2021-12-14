@@ -1,5 +1,5 @@
 with source as (
-    SELECT * FROM "FIVETRAN_DATABASE"."POSTGRES_NORTHWINDS_RDS_PUBLIC"."SUPPLIERS"
+    SELECT * FROM {{ source('rds', 'suppliers') }}
 ),
 renamed as (
     SELECT supplier_id, company_name,
@@ -22,4 +22,4 @@ renamed as (
       FROM renamed
 )
 
-SELECT * FROM final
+SELECT * FROM source
