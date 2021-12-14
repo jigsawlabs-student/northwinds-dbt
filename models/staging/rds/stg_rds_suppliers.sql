@@ -22,4 +22,4 @@ renamed as (
       FROM renamed
 )
 
-SELECT * FROM source
+SELECT * FROM final
