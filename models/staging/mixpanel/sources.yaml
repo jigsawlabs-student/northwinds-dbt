@@ -1,7 +1,0 @@
-version: 2
-sources:
-  - name: mixpanel
-    database: fivetran_database
-    schema: mixpanel
-    tables:
-      - name: contacts
