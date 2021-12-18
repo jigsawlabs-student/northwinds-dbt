@@ -5,9 +5,14 @@ renamed as (
     SELECT supplier_id, company_name,
      SPLIT_PART(contact_name, ' ', 1) as contact_first_name,
      SPLIT_PART(contact_name, ' ', -1) as contact_last_name,
-     contact_title, REPLACE(TRANSLATE(phone, '(,),-,.', ''), ' ', '') as phone,
-     address, city, postal_code,
-      region, fax, homepage, _fivetran_synced, _fivetran_deleted FROM source
+     contact_title, 
+     REPLACE(TRANSLATE(phone, '(,),-,.', ''), ' ', '') as phone,
+     address, 
+     city,
+    postal_code,
+      region,
+       fax,
+        homepage, _fivetran_synced, _fivetran_deleted FROM source
 ), final as (
     SELECT supplier_id, company_name, 
     contact_first_name, contact_last_name,
