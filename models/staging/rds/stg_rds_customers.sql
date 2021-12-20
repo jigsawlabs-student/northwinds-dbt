@@ -17,7 +17,7 @@ renamed as (
        END as phone,
     company_id
     FROM customers 
-    JOIN companies ON companies.company_name = customers.company_name 
+    JOIN companies ON companies.name = customers.company_name 
 ), final as 
 (
   SELECT
