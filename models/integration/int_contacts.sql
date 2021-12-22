@@ -24,12 +24,12 @@
     company_id as rds_company_id
     FROM customers
  ), final as (
-     select max(hubspot_contact_id) as hubspot_contact_id, max(rds_contact_id) as rds_contact_id,
+     select 
+     max(hubspot_contact_id) as hubspot_contact_id, max(rds_contact_id) as rds_contact_id,
         first_name, last_name, max(phone) as phone, 
         max(hubspot_company_id) as hubspot_company_id, max(rds_company_id) rds_company_id
      from merged_contacts
-      group by first_name, last_name ORDER BY last_name
+      group by first_name, last_name
  )
- select first_name, last_name, name from final
-  join {{ ref('int_companies') }} int_companies on 
-  int_companies.rds_company_id = final.rds_company_id or int_companies.hubspot_company_id = final.hubspot_company_id
+ select {{ dbt_utils.surrogate_key(['first_name', 'last_name', 'phone']) }} as contact_pk, hubspot_contact_id, rds_contact_id,
+  first_name, last_name, phone, hubspot_company_id, rds_company_id from final 
