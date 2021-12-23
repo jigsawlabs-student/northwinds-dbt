@@ -1,3 +1,5 @@
+{{ config(materialized='table') }}
+
 with contacts as (
    select * from {{ ref('int_contacts') }}
 ),

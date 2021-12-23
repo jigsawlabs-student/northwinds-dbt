@@ -1,3 +1,5 @@
+{{ config(materialized='table') }}
+
 WITH int_companies as (
     select * from {{ ref('int_companies') }}
 )
